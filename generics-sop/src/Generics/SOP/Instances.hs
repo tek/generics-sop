@@ -218,30 +218,44 @@ deriveGeneric ''Void -- new
 -- From Foreign.C.Error:
 deriveGeneric ''Errno
 
+#if defined(aarch64_HOST_ARCH) || defined(arm_HOST_ARCH)
+#define ARM
+#endif
+
 -- From Foreign.C.Types:
+#if !defined(ARM)
 deriveGeneric ''CChar
+#endif
 deriveGeneric ''CSChar
 deriveGeneric ''CUChar
 deriveGeneric ''CShort
 deriveGeneric ''CUShort
 deriveGeneric ''CInt
 deriveGeneric ''CUInt
+#if !defined(ARM)
 deriveGeneric ''CLong
 deriveGeneric ''CULong
 deriveGeneric ''CPtrdiff
 deriveGeneric ''CSize
 deriveGeneric ''CWchar
+#endif
 deriveGeneric ''CSigAtomic
 deriveGeneric ''CLLong
 deriveGeneric ''CULLong
+#if !defined(ARM)
 deriveGeneric ''CIntPtr
 deriveGeneric ''CUIntPtr
+#endif
 deriveGeneric ''CIntMax
 deriveGeneric ''CUIntMax
+#if !defined(ARM)
 deriveGeneric ''CClock
 deriveGeneric ''CTime
+#endif
 deriveGeneric ''CUSeconds
+#if !defined(ARM)
 deriveGeneric ''CSUSeconds
+#endif
 deriveGeneric ''CFloat
 deriveGeneric ''CDouble
 
